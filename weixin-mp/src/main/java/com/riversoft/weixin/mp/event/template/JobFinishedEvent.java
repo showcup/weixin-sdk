@@ -11,17 +11,17 @@ import com.riversoft.weixin.common.event.EventRequest;
 public class JobFinishedEvent extends EventRequest {
 
     @JsonProperty("MsgID")
-    private int msgId;
+    private Long msgId;
 
     @JsonProperty("Status")
     @JacksonXmlCData
     private String status;
 
-    public int getMsgId() {
+    public Long getMsgId() {
         return msgId;
     }
 
-    public void setMsgId(int msgId) {
+    public void setMsgId(Long msgId) {
         this.msgId = msgId;
     }
 

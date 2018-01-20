@@ -61,7 +61,33 @@ public class UnifiedOrderRequest {
      */
     @JsonProperty("openid")
     private String openId;
+    
+    /**
+     * 该字段用于上报场景信息，目前支持上报实际门店信息。该字段为JSON对象数据，对象格式为{"store_info":{"id": "门店ID","name": "名称","area_code": "编码","address": "地址" }} 
+     */
+    @JsonProperty("scene_info")
+    private String sceneInfo;
+    
+    //===以下为服务商接口新增参数===//
+    
+    /**
+     * 微信分配的子商户公众账号ID，如需在支付完成后获取sub_openid则此参数必传。
+     */
+    @JsonProperty("sub_appid")
+    private String subAppId;
+    
+    /**
+     * 微信支付分配的子商户号
+     */
+    @JsonProperty("sub_mch_id")
+    private String subMchId;
 
+    /**
+     * trade_type=JSAPI，此参数必传，用户在子商户appid下的唯一标识。openid和sub_openid可以选传其中之一，如果选择传sub_openid,则必须传sub_appid。下单前需要调用【网页授权获取用户信息】接口获取到用户的Openid。 
+     */
+    @JsonProperty("sub_openid")
+    private String subOpenId;
+    
     public String getDeviceInfo() {
         return deviceInfo;
     }
