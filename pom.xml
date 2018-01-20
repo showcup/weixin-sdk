@@ -40,7 +40,7 @@
         <module>weixin-app</module>
     </modules>
 
-    <distributionManagement>
+    <!-- <distributionManagement>
         <snapshotRepository>
             <id>oss</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
@@ -49,8 +49,19 @@
             <id>oss</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
-    </distributionManagement>
-
+    </distributionManagement> -->
+	<distributionManagement>
+		    <repository>
+			  <id>nexus</id>
+			  <name>Releases</name>
+			  <url>http://repos.chuzb.cn/repository/maven-releases</url>
+			</repository>
+			<snapshotRepository>
+			  <id>nexus</id>
+			  <name>Snapshot</name>
+			  <url>http://repos.chuzb.cn/repository/maven-snapshots</url>
+			</snapshotRepository>
+	   </distributionManagement>
     <scm>
         <url>https://github.com/borball/weixin-sdk</url>
         <connection>scm:git:git@github.com:borball/weixin-sdk.git</connection>

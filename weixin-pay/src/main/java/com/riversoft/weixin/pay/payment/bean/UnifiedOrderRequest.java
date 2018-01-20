@@ -215,4 +215,36 @@ public class UnifiedOrderRequest {
     public void setOpenId(String openId) {
         this.openId = openId;
     }
+
+	public String getSceneInfo() {
+		return sceneInfo;
+	}
+
+	public void setSceneInfo(String sceneInfo) {
+		this.sceneInfo = sceneInfo;
+	}
+
+	public String getSubAppId() {
+		return subAppId;
+	}
+
+	public void setSubAppId(String subAppId) {
+		this.subAppId = subAppId;
+	}
+
+	public String getSubMchId() {
+		return subMchId;
+	}
+
+	public void setSubMchId(String subMchId) {
+		this.subMchId = subMchId;
+	}
+
+	public String getSubOpenId() {
+		return subOpenId;
+	}
+
+	public void setSubOpenId(String subOpenId) {
+		this.subOpenId = subOpenId;
+	}
 }
