@@ -22,6 +22,12 @@ public class UnifiedOrderResponse extends BaseResponse {
      */
     @JsonProperty("code_url")
     private String codeUrl;
+    
+    /**
+     * trade_type为MWEB时有返回，用于生成在wap网页中拉起微信进行支付
+     */
+    @JsonProperty("mweb_url")
+    private String mwebUrl;
 
     public String getDeviceInfo() {
         return deviceInfo;
@@ -54,4 +60,12 @@ public class UnifiedOrderResponse extends BaseResponse {
     public void setCodeUrl(String codeUrl) {
         this.codeUrl = codeUrl;
     }
+
+	public String getMwebUrl() {
+		return mwebUrl;
+	}
+
+	public void setMwebUrl(String mwebUrl) {
+		this.mwebUrl = mwebUrl;
+	}
 }
