@@ -27,6 +27,9 @@ public class RefundRequest {
 
     @JsonProperty("op_user_id")
     private String operatorId;
+    
+    @JsonProperty("notify_url")
+    private String notifyUrl;
 
     public String getTransactionId() {
         return transactionId;
