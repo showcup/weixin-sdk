@@ -86,4 +86,13 @@ public class RefundRequest {
     public void setOperatorId(String operatorId) {
         this.operatorId = operatorId;
     }
+
+	public String getNotifyUrl() {
+		return notifyUrl;
+	}
+
+	public void setNotifyUrl(String notifyUrl) {
+		this.notifyUrl = notifyUrl;
+	}
+    
 }
