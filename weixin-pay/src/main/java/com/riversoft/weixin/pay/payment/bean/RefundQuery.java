@@ -1,21 +1,29 @@
 package com.riversoft.weixin.pay.payment.bean;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.riversoft.weixin.pay.base.BaseResponse;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.riversoft.weixin.pay.payment.Payments;
 
 /**
  * @borball on 5/17/2016.
  */
 @JsonIgnoreProperties
 public class RefundQuery extends BaseResponse {
-
+	private static Logger logger = LoggerFactory.getLogger(RefundQuery.class);
     @JsonProperty("transaction_id")
     private String transactionId;
 
@@ -142,6 +150,15 @@ public class RefundQuery extends BaseResponse {
                 if(others.containsKey("coupon_refund_fee_" + i)) {
                     refund.setCouponRefundFee(Integer.valueOf(others.get("coupon_refund_fee_" + i).toString()));
                 }
+                if(others.containsKey("refund_success_time_" + i)) {
+                	String refundSuccessTime = (String)others.get("refund_success_time_" + i);
+                	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    try {
+                    	refund.setRefundSuccessTime(dateFormat.parse(refundSuccessTime));
+                    } catch (ParseException e) {
+                    	logger.error("日期格式转换出错，日期="+refundSuccessTime,e);
+                    }
+                }
                 if(others.containsKey("coupon_refund_count_" + i)) {
                     int count = Integer.valueOf(others.get("coupon_refund_count_" + i).toString());
                     refund.setCouponRefundCount(count);
@@ -185,7 +202,7 @@ public class RefundQuery extends BaseResponse {
         private int couponRefundCount;
         private String refundStatus;
         private String refundReceiveAccount;
-
+        private Date refundSuccessTime;
         private List<CouponRefund> couponRefunds;
 
         public String getOutRefundNo() {
@@ -275,6 +292,14 @@ public class RefundQuery extends BaseResponse {
         public void setCouponRefunds(List<CouponRefund> couponRefunds) {
             this.couponRefunds = couponRefunds;
         }
+
+		public Date getRefundSuccessTime() {
+			return refundSuccessTime;
+		}
+
+		public void setRefundSuccessTime(Date refundSuccessTime) {
+			this.refundSuccessTime = refundSuccessTime;
+		}
     }
 
     public class CouponRefund {
